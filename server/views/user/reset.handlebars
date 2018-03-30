@@ -1,0 +1,28 @@
+<h4>Reset password</h4>
+
+<p>Enter new password.</p>
+
+{{#if errors}}
+    <div class="errors">
+        {{#each errors}}
+            {{this.msg}}<br/>
+        {{/each}}
+        <br/>
+    </div>
+{{/if}}
+
+<form action="/user/reset/" method="POST">
+    <div class="from-group">
+        <label for="password">Password</label>
+        <input name="password" id="password" type="password" />
+    </div>
+    <div class="from-group">
+        <label for="re_password">Password again</label>
+        <input name="re_password" id="re_password" type="password" />
+    </div>
+    <input type="hidden" value="{{reset.id}}" name="resetId" />
+    <input type="hidden" value="{{reset.hash}}" name="resetHash" />
+    <div>
+        <button class="btn btn-primary" type="submit">Reset</button>
+    </div>
+</form>

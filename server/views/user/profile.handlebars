@@ -1,0 +1,26 @@
+<h4>Profile</h4>
+
+{{{messages}}}
+
+{{#if errors}}
+    <div class="errors">
+        {{#each errors}}
+            {{this.msg}}<br/>
+        {{/each}}
+        <br/>
+    </div>
+{{/if}}
+
+<form action="/user/" method="POST">
+    <div class="from-group">
+        <label for="username">Username</label>
+        <input name="username" id="username" type="text" value="{{user.username}}" />
+    </div>
+    <div class="from-group">
+        <label for="email">E-mail</label>
+        <input name="email" id="email" type="email" value="{{user.email}}" />
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Change details</button>
+    </div>
+</form>

@@ -1,0 +1,28 @@
+<h4>Forgot your password?</h4>
+
+{{{messages}}}
+
+{{#if errors}}
+    <div class="errors">
+        {{#each errors}}
+            {{this.msg}}<br/>
+        {{/each}}
+        <br/>
+    </div>
+{{/if}}
+
+<form action="/user/forgot/" method="POST">
+    <div class="from-group">
+        <label for="email">E-mail</label>
+        <input name="email" id="email" type="email" />
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">Reset</button>
+    </div>
+    <div>
+        <a href="/user/login/">Login</a>
+    </div>
+    <div>
+        <a href="/user/register/">Create account.</a>
+    </div>
+</form>

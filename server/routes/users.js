@@ -4,6 +4,8 @@ var router = express.Router();
 var LOAD = global.LOAD;
 var User = LOAD.model('User');
 
+var ensureAuthenticated = global.ensureAuthenticated;
+
 var expressValidator = global.expressValidator;
 router.use(expressValidator({
     customValidators: {
@@ -34,8 +36,15 @@ var userController = LOAD.controller('UserController');
 
 router.get('/register/', userController.register);
 router.post('/register/', userController.register);
+router.get('/activate/:_id/:_hash/', userController.activate);
 router.get('/login/', userController.login);
 router.post('/login/', userController.login);
-router.post('/logout/', userController.logout);
+router.post('/logout/', ensureAuthenticated, userController.logout);
+router.get('/forgot/', userController.forgot);
+router.post('/forgot/', userController.forgot);
+router.get('/reset/:_id/:_resetHash/', userController.reset);
+router.post('/reset/', userController.reset);
+router.get('/', ensureAuthenticated, userController.profile);
+router.post('/', ensureAuthenticated, userController.profile);
 
 module.exports = router;

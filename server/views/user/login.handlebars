@@ -1,21 +1,21 @@
 <h4>Login page</h4>
 
-{{messages}}
+{{{messages}}}
 
 <form action="/user/login/" method="POST">
     <div class="from-group">
         <label for="username">Username</label>
-        <input name="username" id="username" />
+        <input name="username" id="username" type="text" />
     </div>
     <div class="from-group">
         <label for="password">Password</label>
-        <input name="password" id="password" />
+        <input name="password" id="password" type="password" />
     </div>
     <div>
         <button class="btn btn-primary" type="submit">Login</button>
     </div>
     <div>
-        <a href="/user/forget/">Forget your password.</a>
+        <a href="/user/forgot/">Forgot your password.</a>
     </div>
     <div>
         <a href="/user/register/">Create account.</a>

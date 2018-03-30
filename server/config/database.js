@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 var db = {
-    'name': 'express-restful',
-    'user': 'narekkeryan',
-    'pass': 'aBK15d52cyRuhZ3l',
-    'host': 'ds229609.mlab.com:29609'
+    'name': 'DB_NAME',
+    'user': 'DB_USER',
+    'pass': 'DB_PASSWORD',
+    'host': 'DB_HOST:PORT'
 };
 
 mongoose.connect(`mongodb://${db.user}:${db.pass}@${db.host}/${db.name}`);

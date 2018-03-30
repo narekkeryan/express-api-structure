@@ -18,6 +18,20 @@ LOAD.setPath(__dirname);
 global.mongoose = LOAD.config('database');
 
 
+/* ******************** NODEMAILER ******************** */
+var nodemailer = require('nodemailer');
+global.transport = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    requireTLS: true,
+    auth: {
+        user: 'USERNAME@gmail.com',
+        pass: 'PASSWORD'
+    }
+});
+
+
 /* ******************** BODY PARSER MIDDLEWARE ******************** */
 var bodyParser = require('body-parser');
 expressApp.use(bodyParser.json());
@@ -43,7 +57,7 @@ expressApp.use(passport.session());
 var flash = require('connect-flash');
 expressApp.use(flash());
 expressApp.use((req, res, next) => {
-    res.locals.messages = require('express-messages')(req, res);
+    res.locals.messages = require('express-messages')(req, res)();
     next();
 });
 
@@ -86,7 +100,7 @@ expressApp.set('view engine', 'handlebars');
 
 
 /* ******************** ENSURE AUTHENTICATED ******************** */
-/*const ensureAuthenticated = (req, res, next) => {
+global.ensureAuthenticated = (req, res, next) => {
     'use strict';
     if (req.isAuthenticated() || req.path === '/user/login/') {
         return next();
@@ -95,7 +109,6 @@ expressApp.set('view engine', 'handlebars');
         res.redirect('/user/login/');
     }
 };
-expressApp.use(ensureAuthenticated);*/
 
 
 /* ******************** ADD SLASH AFTER PATH ******************** */

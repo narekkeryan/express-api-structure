@@ -22,6 +22,13 @@ var UserSchema = new Schema({
         trim: true
     },
     salt: String,
+    status: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    _hash: String,
+    _resetHash: String,
     created_at: {
         type: Number,
         required: true,

@@ -14,7 +14,11 @@ module.exports = (passport) => {
             bcrypt.compare(password, user.password, (err, isMatch) => {
                 if (err) throw err;
                 if (isMatch) {
-                    return done(null, user);
+                    if (user.status == 1) {
+                        return done(null, user);
+                    } else {
+                        return done(null, false, {message: 'First activate profile by email.'});
+                    }
                 } else {
                     return done(null, false, {message: 'Wrong password'});
                 }
