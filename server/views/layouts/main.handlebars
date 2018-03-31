@@ -2,8 +2,31 @@
 <html>
 <head>
     <title>Express Api Structure</title>
+    <link rel="stylesheet" href="/css/main.min.css"/>
 </head>
 <body>
+<ul class="menu">
+    <li class="menu-item">
+        <a href="/">Home</a>
+    </li>
+    {{#if user}}
+        <li class="menu-item">
+            <a href="/user/">Profile</a>
+        </li>
+        <li class="menu-item">
+            <form action="/user/logout/" method="POST">
+                <button type="submit">Logout</button>
+            </form>
+        </li>
+    {{else}}
+        <li class="menu-item">
+            <a href="/user/login/">Login</a>
+        </li>
+        <li class="menu-item">
+            <a href="/user/register/">Register</a>
+        </li>
+    {{/if}}
+</ul>
     {{{body}}}
 </body>
 </html>
