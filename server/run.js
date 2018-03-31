@@ -26,8 +26,8 @@ global.transport = nodemailer.createTransport({
     secure: false,
     requireTLS: true,
     auth: {
-        user: 'USERNAME@gmail.com',
-        pass: 'PASSWORD'
+        user: 'USER@gmail.com',
+        pass: 'PASS'
     }
 });
 
@@ -41,7 +41,7 @@ expressApp.use(bodyParser.urlencoded({ extended: true }));
 /* ******************** EXPRESS SESSION ******************** */
 var expressSession = require('express-session');
 expressApp.use(expressSession({
-    secret: 'NataliePortman',
+    secret: 'YOUR_SECRET',
     resave: true,
     saveUninitialized: true
 }));
@@ -131,6 +131,8 @@ var mainRouter = LOAD.route('index');
 expressApp.use('/', mainRouter);
 var userRouter = LOAD.route('users');
 expressApp.use('/user', userRouter);
+var apiRouter = LOAD.route('api');
+expressApp.use('/api/v1', apiRouter);
 var errorRouter = LOAD.route('errors');
 expressApp.use(errorRouter);
 

@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 var db = {
     'name': 'DB_NAME',
     'user': 'DB_USER',
-    'pass': 'DB_PASSWORD',
-    'host': 'DB_HOST:PORT'
+    'pass': 'DB_PASS',
+    'host': 'DB:HOST:PORT'
 };
 
 mongoose.connect(`mongodb://${db.user}:${db.pass}@${db.host}/${db.name}`);
